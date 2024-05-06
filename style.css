@@ -38,7 +38,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 35px;
     height: 100px;
     border: 1px solid #ccc;
     cursor: pointer;
@@ -58,6 +58,12 @@ h1{
 .game button:hover{
     transform: scale(0.9);
     background-color: #0056b3;
+}
+.status{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+
 }
 .credits{
     position: fixed;
