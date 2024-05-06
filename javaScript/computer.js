@@ -51,10 +51,8 @@ function turnClick(square) {
   if (typeof origBoard[square.target.id] == "number") {
     turn(square.target.id, huplayer);
     checkDraw();
-    setTimeout(() => {
       turn(bestSpot(), computer);
       checkDraw();
-    }, 250);
   }
 }
 function turn(squareId, player) {
