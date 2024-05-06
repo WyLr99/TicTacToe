@@ -37,11 +37,8 @@ function startGame() {
   }
   if (rng === 0) {
     rng = Math.floor(Math.random() * players.length);
-    if (rng === 0) {
-      turn(bestSpot(), computer);
-    } else {
-      computerTurn();
-    }
+    if (rng === 0) turn(bestSpot(), computer);
+    else computerTurn();
   }
   statusOfPlay.innerHTML = "You are playing as " + huplayer;
 }
@@ -170,15 +167,11 @@ function checkWinner() {
 }
 
 function computerTurn() {
-  checkDraw();
-  if (isWinner || isDraw) return;
-  let emptyCells = [];
-  cells.forEach((cell) => {
-    if (cell.textContent === "") {
-      emptyCells.push(cell);
-    }
-  });
-  let randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-  randomCell.textContent = computer;
-  checkWinner();
+  let index = Math.floor(Math.random() * 9);
+  if (typeof origBoard[index] == "number") {
+    turn(index, computer);
+  } else {
+    computerTurn();
+  }
+  
 }
