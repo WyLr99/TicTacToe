@@ -53,7 +53,7 @@ function turnClick(square) {
     setTimeout(() => {
       counter = 0;
       turn(bestSpot(), computer);
-    }, 1000);
+    }, 250);
 
     checkDraw();
   }
