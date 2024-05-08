@@ -11,7 +11,7 @@ var origBoard;
 let isDraw = false;
 let isWinner = false;
 let rng = Math.floor(Math.random() * players.length);
-
+let counter = 0;
 const winCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -36,23 +36,26 @@ function startGame() {
     cells[i].addEventListener("click", turnClick, false);
   }
   if (rng === 0) {
-    rng = Math.floor(Math.random() * players.length);
-    if (rng === 0) turn(bestSpot(), computer);
-    else computerTurn();
+    computerTurn();
   }
   statusOfPlay.innerHTML = "You are playing as " + huplayer;
 }
 function turnClick(square) {
   checkDraw();
   checkWinner();
-  if (isDraw || isWinner) {
+  if (isDraw || isWinner || counter == 1) {
     return;
   }
   if (typeof origBoard[square.target.id] == "number") {
     turn(square.target.id, huplayer);
+    counter = 1;
     checkDraw();
+    setTimeout(() => {
+      counter = 0;
       turn(bestSpot(), computer);
-      checkDraw();
+    }, 1000);
+
+    checkDraw();
   }
 }
 function turn(squareId, player) {
@@ -171,5 +174,4 @@ function computerTurn() {
   } else {
     computerTurn();
   }
-  
 }
